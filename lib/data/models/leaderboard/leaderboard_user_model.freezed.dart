@@ -23,6 +23,7 @@ mixin _$LeaderboardUserModel {
   String get fullname => throw _privateConstructorUsedError;
   double get gpa => throw _privateConstructorUsedError;
   String? get avatar => throw _privateConstructorUsedError;
+  List<SubjectModel> get subjects => throw _privateConstructorUsedError;
 
   /// Serializes this LeaderboardUserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +41,11 @@ abstract class $LeaderboardUserModelCopyWith<$Res> {
           $Res Function(LeaderboardUserModel) then) =
       _$LeaderboardUserModelCopyWithImpl<$Res, LeaderboardUserModel>;
   @useResult
-  $Res call({String fullname, double gpa, String? avatar});
+  $Res call(
+      {String fullname,
+      double gpa,
+      String? avatar,
+      List<SubjectModel> subjects});
 }
 
 /// @nodoc
@@ -62,6 +67,7 @@ class _$LeaderboardUserModelCopyWithImpl<$Res,
     Object? fullname = null,
     Object? gpa = null,
     Object? avatar = freezed,
+    Object? subjects = null,
   }) {
     return _then(_value.copyWith(
       fullname: null == fullname
@@ -76,6 +82,10 @@ class _$LeaderboardUserModelCopyWithImpl<$Res,
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
+      subjects: null == subjects
+          ? _value.subjects
+          : subjects // ignore: cast_nullable_to_non_nullable
+              as List<SubjectModel>,
     ) as $Val);
   }
 }
@@ -88,7 +98,11 @@ abstract class _$$LeaderboardUserModelImplCopyWith<$Res>
       __$$LeaderboardUserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String fullname, double gpa, String? avatar});
+  $Res call(
+      {String fullname,
+      double gpa,
+      String? avatar,
+      List<SubjectModel> subjects});
 }
 
 /// @nodoc
@@ -107,6 +121,7 @@ class __$$LeaderboardUserModelImplCopyWithImpl<$Res>
     Object? fullname = null,
     Object? gpa = null,
     Object? avatar = freezed,
+    Object? subjects = null,
   }) {
     return _then(_$LeaderboardUserModelImpl(
       fullname: null == fullname
@@ -121,6 +136,10 @@ class __$$LeaderboardUserModelImplCopyWithImpl<$Res>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
+      subjects: null == subjects
+          ? _value._subjects
+          : subjects // ignore: cast_nullable_to_non_nullable
+              as List<SubjectModel>,
     ));
   }
 }
@@ -129,7 +148,11 @@ class __$$LeaderboardUserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LeaderboardUserModelImpl implements _LeaderboardUserModel {
   const _$LeaderboardUserModelImpl(
-      {required this.fullname, required this.gpa, this.avatar});
+      {required this.fullname,
+      required this.gpa,
+      this.avatar,
+      required final List<SubjectModel> subjects})
+      : _subjects = subjects;
 
   factory _$LeaderboardUserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LeaderboardUserModelImplFromJson(json);
@@ -140,10 +163,17 @@ class _$LeaderboardUserModelImpl implements _LeaderboardUserModel {
   final double gpa;
   @override
   final String? avatar;
+  final List<SubjectModel> _subjects;
+  @override
+  List<SubjectModel> get subjects {
+    if (_subjects is EqualUnmodifiableListView) return _subjects;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_subjects);
+  }
 
   @override
   String toString() {
-    return 'LeaderboardUserModel(fullname: $fullname, gpa: $gpa, avatar: $avatar)';
+    return 'LeaderboardUserModel(fullname: $fullname, gpa: $gpa, avatar: $avatar, subjects: $subjects)';
   }
 
   @override
@@ -154,12 +184,14 @@ class _$LeaderboardUserModelImpl implements _LeaderboardUserModel {
             (identical(other.fullname, fullname) ||
                 other.fullname == fullname) &&
             (identical(other.gpa, gpa) || other.gpa == gpa) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar));
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            const DeepCollectionEquality().equals(other._subjects, _subjects));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, fullname, gpa, avatar);
+  int get hashCode => Object.hash(runtimeType, fullname, gpa, avatar,
+      const DeepCollectionEquality().hash(_subjects));
 
   /// Create a copy of LeaderboardUserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -183,7 +215,8 @@ abstract class _LeaderboardUserModel implements LeaderboardUserModel {
   const factory _LeaderboardUserModel(
       {required final String fullname,
       required final double gpa,
-      final String? avatar}) = _$LeaderboardUserModelImpl;
+      final String? avatar,
+      required final List<SubjectModel> subjects}) = _$LeaderboardUserModelImpl;
 
   factory _LeaderboardUserModel.fromJson(Map<String, dynamic> json) =
       _$LeaderboardUserModelImpl.fromJson;
@@ -194,6 +227,8 @@ abstract class _LeaderboardUserModel implements LeaderboardUserModel {
   double get gpa;
   @override
   String? get avatar;
+  @override
+  List<SubjectModel> get subjects;
 
   /// Create a copy of LeaderboardUserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -201,4 +236,190 @@ abstract class _LeaderboardUserModel implements LeaderboardUserModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LeaderboardUserModelImplCopyWith<_$LeaderboardUserModelImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) {
+  return _SubjectModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SubjectModel {
+  String get name => throw _privateConstructorUsedError;
+  double get percentage => throw _privateConstructorUsedError;
+  int get rank => throw _privateConstructorUsedError;
+
+  /// Serializes this SubjectModel to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SubjectModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SubjectModelCopyWith<SubjectModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SubjectModelCopyWith<$Res> {
+  factory $SubjectModelCopyWith(
+          SubjectModel value, $Res Function(SubjectModel) then) =
+      _$SubjectModelCopyWithImpl<$Res, SubjectModel>;
+  @useResult
+  $Res call({String name, double percentage, int rank});
+}
+
+/// @nodoc
+class _$SubjectModelCopyWithImpl<$Res, $Val extends SubjectModel>
+    implements $SubjectModelCopyWith<$Res> {
+  _$SubjectModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SubjectModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? percentage = null,
+    Object? rank = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      percentage: null == percentage
+          ? _value.percentage
+          : percentage // ignore: cast_nullable_to_non_nullable
+              as double,
+      rank: null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SubjectModelImplCopyWith<$Res>
+    implements $SubjectModelCopyWith<$Res> {
+  factory _$$SubjectModelImplCopyWith(
+          _$SubjectModelImpl value, $Res Function(_$SubjectModelImpl) then) =
+      __$$SubjectModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, double percentage, int rank});
+}
+
+/// @nodoc
+class __$$SubjectModelImplCopyWithImpl<$Res>
+    extends _$SubjectModelCopyWithImpl<$Res, _$SubjectModelImpl>
+    implements _$$SubjectModelImplCopyWith<$Res> {
+  __$$SubjectModelImplCopyWithImpl(
+      _$SubjectModelImpl _value, $Res Function(_$SubjectModelImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SubjectModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? percentage = null,
+    Object? rank = null,
+  }) {
+    return _then(_$SubjectModelImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      percentage: null == percentage
+          ? _value.percentage
+          : percentage // ignore: cast_nullable_to_non_nullable
+              as double,
+      rank: null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SubjectModelImpl implements _SubjectModel {
+  const _$SubjectModelImpl(
+      {required this.name, required this.percentage, required this.rank});
+
+  factory _$SubjectModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubjectModelImplFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final double percentage;
+  @override
+  final int rank;
+
+  @override
+  String toString() {
+    return 'SubjectModel(name: $name, percentage: $percentage, rank: $rank)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubjectModelImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.percentage, percentage) ||
+                other.percentage == percentage) &&
+            (identical(other.rank, rank) || other.rank == rank));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, percentage, rank);
+
+  /// Create a copy of SubjectModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubjectModelImplCopyWith<_$SubjectModelImpl> get copyWith =>
+      __$$SubjectModelImplCopyWithImpl<_$SubjectModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SubjectModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SubjectModel implements SubjectModel {
+  const factory _SubjectModel(
+      {required final String name,
+      required final double percentage,
+      required final int rank}) = _$SubjectModelImpl;
+
+  factory _SubjectModel.fromJson(Map<String, dynamic> json) =
+      _$SubjectModelImpl.fromJson;
+
+  @override
+  String get name;
+  @override
+  double get percentage;
+  @override
+  int get rank;
+
+  /// Create a copy of SubjectModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SubjectModelImplCopyWith<_$SubjectModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

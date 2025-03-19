@@ -12,7 +12,6 @@ class DetailUserModel with _$DetailUserModel {
     required List<ScienceModel> sciences,
   }) = _DetailUserModel;
 
-
   factory DetailUserModel.fromJson(Map<String, dynamic> json) =>
       _$DetailUserModelFromJson(json);
 }
@@ -23,6 +22,7 @@ class ScienceModel with _$ScienceModel {
     required String name,
     required List<TaskModel> tasks,
     required double percentage,
+    required int rank,
   }) = _ScienceModel;
 
   factory ScienceModel.fromJson(Map<String, dynamic> json) =>

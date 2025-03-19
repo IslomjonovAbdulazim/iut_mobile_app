@@ -245,6 +245,7 @@ mixin _$ScienceModel {
   String get name => throw _privateConstructorUsedError;
   List<TaskModel> get tasks => throw _privateConstructorUsedError;
   double get percentage => throw _privateConstructorUsedError;
+  int get rank => throw _privateConstructorUsedError;
 
   /// Serializes this ScienceModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -262,7 +263,7 @@ abstract class $ScienceModelCopyWith<$Res> {
           ScienceModel value, $Res Function(ScienceModel) then) =
       _$ScienceModelCopyWithImpl<$Res, ScienceModel>;
   @useResult
-  $Res call({String name, List<TaskModel> tasks, double percentage});
+  $Res call({String name, List<TaskModel> tasks, double percentage, int rank});
 }
 
 /// @nodoc
@@ -283,6 +284,7 @@ class _$ScienceModelCopyWithImpl<$Res, $Val extends ScienceModel>
     Object? name = null,
     Object? tasks = null,
     Object? percentage = null,
+    Object? rank = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -297,6 +299,10 @@ class _$ScienceModelCopyWithImpl<$Res, $Val extends ScienceModel>
           ? _value.percentage
           : percentage // ignore: cast_nullable_to_non_nullable
               as double,
+      rank: null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -309,7 +315,7 @@ abstract class _$$ScienceModelImplCopyWith<$Res>
       __$$ScienceModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<TaskModel> tasks, double percentage});
+  $Res call({String name, List<TaskModel> tasks, double percentage, int rank});
 }
 
 /// @nodoc
@@ -328,6 +334,7 @@ class __$$ScienceModelImplCopyWithImpl<$Res>
     Object? name = null,
     Object? tasks = null,
     Object? percentage = null,
+    Object? rank = null,
   }) {
     return _then(_$ScienceModelImpl(
       name: null == name
@@ -342,6 +349,10 @@ class __$$ScienceModelImplCopyWithImpl<$Res>
           ? _value.percentage
           : percentage // ignore: cast_nullable_to_non_nullable
               as double,
+      rank: null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -352,7 +363,8 @@ class _$ScienceModelImpl implements _ScienceModel {
   const _$ScienceModelImpl(
       {required this.name,
       required final List<TaskModel> tasks,
-      required this.percentage})
+      required this.percentage,
+      required this.rank})
       : _tasks = tasks;
 
   factory _$ScienceModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -370,10 +382,12 @@ class _$ScienceModelImpl implements _ScienceModel {
 
   @override
   final double percentage;
+  @override
+  final int rank;
 
   @override
   String toString() {
-    return 'ScienceModel(name: $name, tasks: $tasks, percentage: $percentage)';
+    return 'ScienceModel(name: $name, tasks: $tasks, percentage: $percentage, rank: $rank)';
   }
 
   @override
@@ -384,13 +398,14 @@ class _$ScienceModelImpl implements _ScienceModel {
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._tasks, _tasks) &&
             (identical(other.percentage, percentage) ||
-                other.percentage == percentage));
+                other.percentage == percentage) &&
+            (identical(other.rank, rank) || other.rank == rank));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name,
-      const DeepCollectionEquality().hash(_tasks), percentage);
+      const DeepCollectionEquality().hash(_tasks), percentage, rank);
 
   /// Create a copy of ScienceModel
   /// with the given fields replaced by the non-null parameter values.
@@ -412,7 +427,8 @@ abstract class _ScienceModel implements ScienceModel {
   const factory _ScienceModel(
       {required final String name,
       required final List<TaskModel> tasks,
-      required final double percentage}) = _$ScienceModelImpl;
+      required final double percentage,
+      required final int rank}) = _$ScienceModelImpl;
 
   factory _ScienceModel.fromJson(Map<String, dynamic> json) =
       _$ScienceModelImpl.fromJson;
@@ -423,6 +439,8 @@ abstract class _ScienceModel implements ScienceModel {
   List<TaskModel> get tasks;
   @override
   double get percentage;
+  @override
+  int get rank;
 
   /// Create a copy of ScienceModel
   /// with the given fields replaced by the non-null parameter values.

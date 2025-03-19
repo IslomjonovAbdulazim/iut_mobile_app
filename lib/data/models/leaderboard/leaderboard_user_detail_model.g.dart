@@ -33,6 +33,7 @@ _$ScienceModelImpl _$$ScienceModelImplFromJson(Map<String, dynamic> json) =>
           .map((e) => TaskModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       percentage: (json['percentage'] as num).toDouble(),
+      rank: (json['rank'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ScienceModelImplToJson(_$ScienceModelImpl instance) =>
@@ -40,6 +41,7 @@ Map<String, dynamic> _$$ScienceModelImplToJson(_$ScienceModelImpl instance) =>
       'name': instance.name,
       'tasks': instance.tasks,
       'percentage': instance.percentage,
+      'rank': instance.rank,
     };
 
 _$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
