@@ -5,6 +5,11 @@ class LeaderboardPage extends GetView<LeaderboardController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Center(
+      child: Text(
+        "Leaderboard",
+        style: context.title,
+      ),
+    );
   }
 }

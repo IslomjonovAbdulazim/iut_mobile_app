@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         darkTheme: AppTheme.darkTheme,
         themeMode: themeController.themeMode,
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.leaderboard,
+        initialRoute: AppRoutes.bnb,
         initialBinding: InitialBinding(),
         getPages: AppPages.pages,
         builder: (context, child) => MediaQuery(

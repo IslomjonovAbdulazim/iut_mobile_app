@@ -5,6 +5,11 @@ class GpaCalculatorPage extends GetView<GpaCalculatorController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Center(
+      child: Text(
+        "GPA Calculator",
+        style: context.title,
+      ),
+    );
   }
 }

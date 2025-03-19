@@ -80,6 +80,10 @@ class BnbPage extends GetView<BnbController> {
                 icon: Icon(Icons.search),
                 label: 'Search'
             ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Teachers'
+            ),
           ],
         );
       }),

@@ -5,6 +5,11 @@ class TeachersPage extends GetView<TeachersController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Center(
+      child: Text(
+        "Teacher",
+        style: context.title,
+      ),
+    );
   }
 }
