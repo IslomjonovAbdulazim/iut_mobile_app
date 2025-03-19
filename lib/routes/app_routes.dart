@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:iut_mobile_app/features/additional/gpa_calculator/imports.dart';
+import 'package:iut_mobile_app/features/additional/teachers/imports.dart';
 import 'package:iut_mobile_app/features/leaderboard/leaderboard/imports.dart';
 import 'package:iut_mobile_app/features/screens/auth/imports.dart';
 import 'package:iut_mobile_app/features/screens/bnb/imports.dart';
@@ -11,6 +13,10 @@ import '../features/screens/upgrade/imports.dart';
 part 'app_pages.dart';
 
 class AppRoutes {
+  /// #Additional
+  static const String teachers = "/teachers";
+  static const String gpaCalculator = "/gpa-calculator";
+
   /// #Leaderboard
   static const String leaderboard = "/leaderboard";
   static const String leaderboardUserDetail = "/leaderboard-user-detail";

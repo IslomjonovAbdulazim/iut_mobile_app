@@ -40,3 +40,45 @@ class TaskModel with _$TaskModel {
   factory TaskModel.fromJson(Map<String, dynamic> json) =>
       _$TaskModelFromJson(json);
 }
+
+
+final DetailUserModel mockDetailUser = DetailUserModel(
+  avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+  fullname: "Javohir Tursunov",
+  gpa: 3.75,
+  sciences: [
+    ScienceModel(
+      name: "Matematika",
+      percentage: 92.3,
+      rank: 1,
+      tasks: [
+        TaskModel(title: "Midterm Exam", total: 40, userEarned: 35),
+        TaskModel(title: "Final Exam", total: 40, userEarned: 38),
+        TaskModel(title: "Homework", total: 10, userEarned: 9),
+        TaskModel(title: "Attendance", total: 10, userEarned: 10),
+      ],
+    ),
+    ScienceModel(
+      name: "Fizika",
+      percentage: 88.7,
+      rank: 2,
+      tasks: [
+        TaskModel(title: "Midterm Exam", total: 30, userEarned: 28),
+        TaskModel(title: "Final Exam", total: 50, userEarned: 45),
+        TaskModel(title: "Lab Work", total: 10, userEarned: 8),
+        TaskModel(title: "Attendance", total: 10, userEarned: 10),
+      ],
+    ),
+    ScienceModel(
+      name: "Informatika",
+      percentage: 95.1,
+      rank: 1,
+      tasks: [
+        TaskModel(title: "Project", total: 50, userEarned: 48),
+        TaskModel(title: "Final Exam", total: 30, userEarned: 27),
+        TaskModel(title: "Homework", total: 10, userEarned: 9),
+        TaskModel(title: "Attendance", total: 10, userEarned: 10),
+      ],
+    ),
+  ],
+);

@@ -130,4 +130,3 @@ List<LeaderboardUserModel> mockLeaderboardUsers = [
     ],
   ),
 ];
-

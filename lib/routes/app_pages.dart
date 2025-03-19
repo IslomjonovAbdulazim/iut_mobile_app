@@ -6,6 +6,25 @@ class AppPages {
     GetPage(
       name: AppRoutes.leaderboard,
       page: () => LeaderboardPage(),
+      bindings: [
+        LeaderboardBinding(),
+      ],
+    ),
+
+    /// #Additional
+    GetPage(
+      name: AppRoutes.teachers,
+      page: () => TeachersPage(),
+      bindings: [
+        TeachersBinding(),
+      ],
+    ),
+    GetPage(
+      name: AppRoutes.gpaCalculator,
+      page: () => GpaCalculatorPage(),
+      bindings: [
+        GpaCalculatorBinding(),
+      ],
     ),
 
     /// #SCREENS
