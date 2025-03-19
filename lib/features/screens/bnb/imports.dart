@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iut_mobile_app/features/leaderboard/leaderboard/imports.dart';
+import 'package:iut_mobile_app/utils/extenstions/color_extension.dart';
 
 import '../../../routes/app_routes.dart';
 

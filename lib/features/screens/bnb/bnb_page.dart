@@ -29,7 +29,7 @@ class BnbPage extends GetView<BnbController> {
             ),
             Navigator(
               key: Get.nestedKey(2),
-              initialRoute: AppRoutes.gpaCalculator,
+              initialRoute: AppRoutes.teachers,
               onGenerateRoute: (RouteSettings settings) {
                 try {
                   final page = AppPages.pages.firstWhere((p) => p.name == settings.name);
@@ -46,7 +46,7 @@ class BnbPage extends GetView<BnbController> {
             ),
             Navigator(
               key: Get.nestedKey(3),
-              initialRoute: AppRoutes.teachers,
+              initialRoute: AppRoutes.gpaCalculator,
               onGenerateRoute: (RouteSettings settings) {
                 try {
                   final page = AppPages.pages.firstWhere((p) => p.name == settings.name);
@@ -68,21 +68,21 @@ class BnbPage extends GetView<BnbController> {
       bottomNavigationBar: Obx(() {
         return BottomNavigationBar(
           currentIndex: controller.tabIndex.value,
-          onTap: (index) {
-            controller.changeTabIndex(index);
-          },
+          onTap: (index) => controller.changeTabIndex(index),
+          selectedItemColor: context.textPrimary,
+          unselectedItemColor: context.textSecondary,
           items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home'
+            const BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.chart_bar_alt_fill),
+              label: "Leaderboard",
             ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Search'
+            const BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.group_solid),
+              label: "Teachers",
             ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Teachers'
+            const BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.number),
+              label: "GPA Calc",
             ),
           ],
         );
