@@ -10,7 +10,7 @@ class TeacherModel with _$TeacherModel {
     required String email,
     required String subject,
     @JsonKey(name: 'office_hours')
-    required String officeHours, // Renamed for better JSON compatibility
+    required String officeHours,
   }) = _TeacherModel;
 
   factory TeacherModel.fromJson(Map<String, dynamic> json) =>
