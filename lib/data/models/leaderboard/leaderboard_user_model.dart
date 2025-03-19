@@ -8,7 +8,7 @@ class LeaderboardUserModel with _$LeaderboardUserModel {
   const factory LeaderboardUserModel({
     required String fullname,
     required double gpa,
-    String avatar,
+    String? avatar,
   }) = _LeaderboardUserModel;
 
   factory LeaderboardUserModel.fromJson(Map<String, dynamic> json) =>
