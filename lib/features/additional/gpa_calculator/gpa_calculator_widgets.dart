@@ -5,20 +5,22 @@ class _Subjects extends GetView<GpaCalculatorController> {
 
   @override
   Widget build(BuildContext context) => Column(
-    children: [
-      const _Top(),
-      Expanded(
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          children: controller.subjects
-              .map(
-                (a) => _SubjectItem(course: a),
-          )
-              .toList(),
-        ),
-      ),
-    ],
-  );
+        children: [
+          _GPAPart(),
+          const _Top(),
+          Expanded(
+            child: Obx(
+              () => ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: controller.subjects.length,
+                itemBuilder: (context, index) => _SubjectItem(
+                  course: controller.subjects[index],
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
 }
 
 class _SubjectItem extends StatelessWidget {
@@ -28,7 +30,7 @@ class _SubjectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,14 +42,14 @@ class _SubjectItem extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: context.dividerColor,
-                  width: 2,
+                  color: context.textPrimary,
+                  width: .5,
                 ),
                 borderRadius: BorderRadius.circular(100000),
               ),
               child: Text(
                 course.credits.toString(),
-                style: context.name,
+                style: context.biggerName,
               ),
             ),
             const SizedBox(width: 20),
@@ -60,6 +62,7 @@ class _SubjectItem extends StatelessWidget {
                     course.courseTitle,
                     style: context.name,
                   ),
+                  SizedBox(height: 5),
                   _Grades(course.courseTitle),
                 ],
               ),
@@ -77,15 +80,13 @@ class _Top extends StatelessWidget {
         children: [
           Text(
             "Credit",
-            style: context.name,
+            style: context.smallName,
           ),
-          SizedBox(width: 5),
+          SizedBox(width: 8),
           Text(
             "Subject",
-            style: context.name,
+            style: context.smallName,
           ),
-          Spacer(),
-          _GPAPart(),
         ],
       );
 }
@@ -123,7 +124,6 @@ class _GradeItem extends GetView<GpaCalculatorController> {
 
   @override
   Widget build(BuildContext context) {
-    final isSelected = controller.isSelected(subject, gradeText);
     return GestureDetector(
       onTap: () {
         controller.select(subject, gradeText);
@@ -134,23 +134,30 @@ class _GradeItem extends GetView<GpaCalculatorController> {
           maxHeight: 35,
           maxWidth: 35,
         ),
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 2),
-          decoration: BoxDecoration(
-            color: isSelected ? Color(color) : Colors.transparent,
-            border: Border.all(
-              color: Color(color),
-              width: 2,
+        child: Obx(
+          () => AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            margin: const EdgeInsets.symmetric(horizontal: 2),
+            decoration: BoxDecoration(
+              color: controller.grades[subject] == gradeText
+                  ? Color(color)
+                  : Colors.transparent,
+              border: Border.all(
+                color: Color(color),
+                width: 2,
+              ),
+              shape: BoxShape.circle,
             ),
-            shape: BoxShape.circle,
-          ),
-          child: Center(
-            child: Text(
-              gradeText,
-              style: TextStyle(
-                color: isSelected ? Colors.black : Color(color),
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
+            child: Center(
+              child: Text(
+                gradeText,
+                style: TextStyle(
+                  color: controller.grades[subject] == gradeText
+                      ? context.backgroundColor
+                      : Color(color),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
               ),
             ),
           ),
@@ -165,9 +172,15 @@ class _GPAPart extends GetView<GpaCalculatorController> {
 
   @override
   Widget build(BuildContext context) => Obx(
-        () => Text(
-          "Your GPA is ${controller.gpa}",
-          style: context.title,
+        () => Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: AnimatedFlipCounter(
+            fractionDigits: 2,
+            duration: Duration(milliseconds: 500),
+            value: controller.gpa,
+            prefix: "GPA is ",
+            textStyle: context.title,
+          ),
         ),
       );
 }
