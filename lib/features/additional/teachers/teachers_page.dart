@@ -5,10 +5,15 @@ class TeachersPage extends GetView<TeachersController> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        "Teacher",
-        style: context.title,
+    return SafeArea(
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: controller.teachers.length,
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        itemBuilder: (context, index) {
+          final t = controller.teachers[index];
+          return _TeacherWidget(teacher: t);
+        },
       ),
     );
   }

@@ -12,6 +12,7 @@ _$TeacherModelImpl _$$TeacherModelImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       subject: json['subject'] as String,
       officeHours: json['office_hours'] as String,
+      avatar: json['avatar'] as String,
     );
 
 Map<String, dynamic> _$$TeacherModelImplToJson(_$TeacherModelImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$TeacherModelImplToJson(_$TeacherModelImpl instance) =>
       'email': instance.email,
       'subject': instance.subject,
       'office_hours': instance.officeHours,
+      'avatar': instance.avatar,
     };

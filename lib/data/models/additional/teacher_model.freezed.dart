@@ -25,6 +25,7 @@ mixin _$TeacherModel {
   String get subject => throw _privateConstructorUsedError;
   @JsonKey(name: 'office_hours')
   String get officeHours => throw _privateConstructorUsedError;
+  String get avatar => throw _privateConstructorUsedError;
 
   /// Serializes this TeacherModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +47,8 @@ abstract class $TeacherModelCopyWith<$Res> {
       {String fullname,
       String email,
       String subject,
-      @JsonKey(name: 'office_hours') String officeHours});
+      @JsonKey(name: 'office_hours') String officeHours,
+      String avatar});
 }
 
 /// @nodoc
@@ -68,6 +70,7 @@ class _$TeacherModelCopyWithImpl<$Res, $Val extends TeacherModel>
     Object? email = null,
     Object? subject = null,
     Object? officeHours = null,
+    Object? avatar = null,
   }) {
     return _then(_value.copyWith(
       fullname: null == fullname
@@ -86,6 +89,10 @@ class _$TeacherModelCopyWithImpl<$Res, $Val extends TeacherModel>
           ? _value.officeHours
           : officeHours // ignore: cast_nullable_to_non_nullable
               as String,
+      avatar: null == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -102,7 +109,8 @@ abstract class _$$TeacherModelImplCopyWith<$Res>
       {String fullname,
       String email,
       String subject,
-      @JsonKey(name: 'office_hours') String officeHours});
+      @JsonKey(name: 'office_hours') String officeHours,
+      String avatar});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$TeacherModelImplCopyWithImpl<$Res>
     Object? email = null,
     Object? subject = null,
     Object? officeHours = null,
+    Object? avatar = null,
   }) {
     return _then(_$TeacherModelImpl(
       fullname: null == fullname
@@ -140,6 +149,10 @@ class __$$TeacherModelImplCopyWithImpl<$Res>
           ? _value.officeHours
           : officeHours // ignore: cast_nullable_to_non_nullable
               as String,
+      avatar: null == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -151,7 +164,8 @@ class _$TeacherModelImpl implements _TeacherModel {
       {required this.fullname,
       required this.email,
       required this.subject,
-      @JsonKey(name: 'office_hours') required this.officeHours});
+      @JsonKey(name: 'office_hours') required this.officeHours,
+      required this.avatar});
 
   factory _$TeacherModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TeacherModelImplFromJson(json);
@@ -165,10 +179,12 @@ class _$TeacherModelImpl implements _TeacherModel {
   @override
   @JsonKey(name: 'office_hours')
   final String officeHours;
+  @override
+  final String avatar;
 
   @override
   String toString() {
-    return 'TeacherModel(fullname: $fullname, email: $email, subject: $subject, officeHours: $officeHours)';
+    return 'TeacherModel(fullname: $fullname, email: $email, subject: $subject, officeHours: $officeHours, avatar: $avatar)';
   }
 
   @override
@@ -181,13 +197,14 @@ class _$TeacherModelImpl implements _TeacherModel {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.officeHours, officeHours) ||
-                other.officeHours == officeHours));
+                other.officeHours == officeHours) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, fullname, email, subject, officeHours);
+      Object.hash(runtimeType, fullname, email, subject, officeHours, avatar);
 
   /// Create a copy of TeacherModel
   /// with the given fields replaced by the non-null parameter values.
@@ -207,11 +224,11 @@ class _$TeacherModelImpl implements _TeacherModel {
 
 abstract class _TeacherModel implements TeacherModel {
   const factory _TeacherModel(
-          {required final String fullname,
-          required final String email,
-          required final String subject,
-          @JsonKey(name: 'office_hours') required final String officeHours}) =
-      _$TeacherModelImpl;
+      {required final String fullname,
+      required final String email,
+      required final String subject,
+      @JsonKey(name: 'office_hours') required final String officeHours,
+      required final String avatar}) = _$TeacherModelImpl;
 
   factory _TeacherModel.fromJson(Map<String, dynamic> json) =
       _$TeacherModelImpl.fromJson;
@@ -225,6 +242,8 @@ abstract class _TeacherModel implements TeacherModel {
   @override
   @JsonKey(name: 'office_hours')
   String get officeHours;
+  @override
+  String get avatar;
 
   /// Create a copy of TeacherModel
   /// with the given fields replaced by the non-null parameter values.
