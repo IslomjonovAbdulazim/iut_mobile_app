@@ -20,10 +20,12 @@ LeaderboardUserModel _$LeaderboardUserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LeaderboardUserModel {
+  String get id => throw _privateConstructorUsedError;
   String get fullname => throw _privateConstructorUsedError;
   double get gpa => throw _privateConstructorUsedError;
   String? get avatar => throw _privateConstructorUsedError;
   List<SubjectModel> get subjects => throw _privateConstructorUsedError;
+  int get rank => throw _privateConstructorUsedError;
 
   /// Serializes this LeaderboardUserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,10 +44,12 @@ abstract class $LeaderboardUserModelCopyWith<$Res> {
       _$LeaderboardUserModelCopyWithImpl<$Res, LeaderboardUserModel>;
   @useResult
   $Res call(
-      {String fullname,
+      {String id,
+      String fullname,
       double gpa,
       String? avatar,
-      List<SubjectModel> subjects});
+      List<SubjectModel> subjects,
+      int rank});
 }
 
 /// @nodoc
@@ -64,12 +68,18 @@ class _$LeaderboardUserModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? fullname = null,
     Object? gpa = null,
     Object? avatar = freezed,
     Object? subjects = null,
+    Object? rank = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       fullname: null == fullname
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
@@ -86,6 +96,10 @@ class _$LeaderboardUserModelCopyWithImpl<$Res,
           ? _value.subjects
           : subjects // ignore: cast_nullable_to_non_nullable
               as List<SubjectModel>,
+      rank: null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -99,10 +113,12 @@ abstract class _$$LeaderboardUserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String fullname,
+      {String id,
+      String fullname,
       double gpa,
       String? avatar,
-      List<SubjectModel> subjects});
+      List<SubjectModel> subjects,
+      int rank});
 }
 
 /// @nodoc
@@ -118,12 +134,18 @@ class __$$LeaderboardUserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? fullname = null,
     Object? gpa = null,
     Object? avatar = freezed,
     Object? subjects = null,
+    Object? rank = null,
   }) {
     return _then(_$LeaderboardUserModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       fullname: null == fullname
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
@@ -140,6 +162,10 @@ class __$$LeaderboardUserModelImplCopyWithImpl<$Res>
           ? _value._subjects
           : subjects // ignore: cast_nullable_to_non_nullable
               as List<SubjectModel>,
+      rank: null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -148,15 +174,19 @@ class __$$LeaderboardUserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LeaderboardUserModelImpl implements _LeaderboardUserModel {
   const _$LeaderboardUserModelImpl(
-      {required this.fullname,
+      {required this.id,
+      required this.fullname,
       required this.gpa,
       this.avatar,
-      required final List<SubjectModel> subjects})
+      required final List<SubjectModel> subjects,
+      required this.rank})
       : _subjects = subjects;
 
   factory _$LeaderboardUserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LeaderboardUserModelImplFromJson(json);
 
+  @override
+  final String id;
   @override
   final String fullname;
   @override
@@ -172,8 +202,11 @@ class _$LeaderboardUserModelImpl implements _LeaderboardUserModel {
   }
 
   @override
+  final int rank;
+
+  @override
   String toString() {
-    return 'LeaderboardUserModel(fullname: $fullname, gpa: $gpa, avatar: $avatar, subjects: $subjects)';
+    return 'LeaderboardUserModel(id: $id, fullname: $fullname, gpa: $gpa, avatar: $avatar, subjects: $subjects, rank: $rank)';
   }
 
   @override
@@ -181,17 +214,19 @@ class _$LeaderboardUserModelImpl implements _LeaderboardUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LeaderboardUserModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.fullname, fullname) ||
                 other.fullname == fullname) &&
             (identical(other.gpa, gpa) || other.gpa == gpa) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
-            const DeepCollectionEquality().equals(other._subjects, _subjects));
+            const DeepCollectionEquality().equals(other._subjects, _subjects) &&
+            (identical(other.rank, rank) || other.rank == rank));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, fullname, gpa, avatar,
-      const DeepCollectionEquality().hash(_subjects));
+  int get hashCode => Object.hash(runtimeType, id, fullname, gpa, avatar,
+      const DeepCollectionEquality().hash(_subjects), rank);
 
   /// Create a copy of LeaderboardUserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -213,14 +248,18 @@ class _$LeaderboardUserModelImpl implements _LeaderboardUserModel {
 
 abstract class _LeaderboardUserModel implements LeaderboardUserModel {
   const factory _LeaderboardUserModel(
-      {required final String fullname,
+      {required final String id,
+      required final String fullname,
       required final double gpa,
       final String? avatar,
-      required final List<SubjectModel> subjects}) = _$LeaderboardUserModelImpl;
+      required final List<SubjectModel> subjects,
+      required final int rank}) = _$LeaderboardUserModelImpl;
 
   factory _LeaderboardUserModel.fromJson(Map<String, dynamic> json) =
       _$LeaderboardUserModelImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get fullname;
   @override
@@ -229,6 +268,8 @@ abstract class _LeaderboardUserModel implements LeaderboardUserModel {
   String? get avatar;
   @override
   List<SubjectModel> get subjects;
+  @override
+  int get rank;
 
   /// Create a copy of LeaderboardUserModel
   /// with the given fields replaced by the non-null parameter values.
