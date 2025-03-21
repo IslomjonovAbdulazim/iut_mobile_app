@@ -13,12 +13,18 @@ class LeaderboardPage extends GetView<LeaderboardController> {
           builder: (context, snapshot) {
             if (snapshot.hasError || snapshot.data == null) {
               return Center(
-                child: Text(snapshot.error.toString()),
+                child: Text(
+                  snapshot.error.toString(),
+                  style: context.smallName,
+                ),
               );
             }
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: Text("Wait"),
+              return Center(
+                child: Text(
+                  "Wait",
+                  style: context.smallName,
+                ),
               );
             }
 
