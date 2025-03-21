@@ -14,26 +14,29 @@ class _UserItem extends StatelessWidget {
     return CupertinoButton(
       padding: EdgeInsets.zero,
       onPressed: () {
-        // Get.toNamed(AppRoutes.userProfile, arguments: user);
+        Get.toNamed(AppRoutes.leaderboardUserDetail, arguments: user);
       },
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 6),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
-            decoration: BoxDecoration(
-              color: context.cardColor,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Row(
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        decoration: BoxDecoration(
+          color: context.cardColor,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          children: [
+            Row(
               children: [
                 SizedBox(
-                  width: 30,
+                  width: 40,
                   child: Text(
                     "${index + 1}",
                     style: context.number,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
+                SizedBox(width: 2),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: user.avatar == null
@@ -49,19 +52,58 @@ class _UserItem extends StatelessWidget {
                         ),
                 ),
                 const SizedBox(width: 10),
-                Text(
-                  user.fullname,
-                  style: context.name,
+                Expanded(
+                  child: Text(
+                    user.fullname,
+                    style: context.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                const Spacer(),
+                SizedBox(width: 3),
                 Text(
                   user.gpa.toStringAsFixed(2),
                   style: context.number,
                 ),
               ],
             ),
-          ),
-        ],
+            SizedBox(height: 8),
+            SizedBox(
+              height: 50,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: user.subjects.length,
+                itemBuilder: (context, index) {
+                  final sub = user.subjects[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: context.selection,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            sub.name,
+                            style: context.smallName,
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            "#${sub.rank} | ${sub.percentage}%",
+                            style: context.number,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
