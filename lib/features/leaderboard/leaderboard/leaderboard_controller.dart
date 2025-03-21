@@ -1,6 +1,8 @@
 part of 'imports.dart';
 
 class LeaderboardController extends GetxController {
+  RxBool isLoading = false.obs;
+
   Stream<List<LeaderboardUserModel>> connectLeaderboard() {
     return Stream.value(mockLeaderboardUsers);
     // print(ApiConstants.streamURL + ApiConstants.leaderboard);

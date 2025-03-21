@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:iut_mobile_app/features/additional/gpa_calculator/imports.dart';
 import 'package:iut_mobile_app/features/additional/teachers/imports.dart';
 import 'package:iut_mobile_app/features/leaderboard/leaderboard/imports.dart';
+import 'package:iut_mobile_app/features/leaderboard/leaderboard_user_detail/imports.dart';
 import 'package:iut_mobile_app/features/screens/auth/imports.dart';
 import 'package:iut_mobile_app/features/screens/bnb/imports.dart';
 import 'package:iut_mobile_app/features/screens/internal_error/imports.dart';

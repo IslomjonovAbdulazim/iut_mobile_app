@@ -10,13 +10,13 @@ class AppPages {
         LeaderboardBinding(),
       ],
     ),
-    // GetPage(
-    //   name: AppRoutes.leaderboardUserDetail,
-    //   page: () => LeadeUser(),
-    //   bindings: [
-    //     LeaderboardBinding(),
-    //   ],
-    // ),
+    GetPage(
+      name: AppRoutes.leaderboardUserDetail,
+      page: () => LeaderboardUserDetailPage(),
+      bindings: [
+        LeaderboardUserDetailBinding(),
+      ],
+    ),
 
     /// #Additional
     GetPage(
