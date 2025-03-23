@@ -25,13 +25,13 @@ class LeaderboardController extends GetxController {
 
   List<String> sortOptions = [
     "GPA",
-    "Academic English 2",
-    "Technical Writing & Discussion",
+    "AE2",
+    "TW&D",
     "Calculus 2",
     "Physics 2",
-    "Physics Experiment 2",
-    "Object Oriented Programming 2",
-    "Creative Engineering Design",
+    "PE2",
+    "OOP2",
+    "CED",
   ];
   RxString selectedSortMethod = "GPA".obs;
 

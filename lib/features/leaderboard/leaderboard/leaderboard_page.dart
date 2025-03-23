@@ -9,7 +9,15 @@ class LeaderboardPage extends GetView<LeaderboardController> {
       backgroundColor: context.backgroundColor,
       appBar: AppBar(
         actions: [
-          _SortMethodDropdown(),
+          SizedBox(width: 20),
+          Text(
+            "Sort Method: ",
+            style: context.smallName,
+          ),
+          SafeArea(child: _SortMethodDropdown()),
+          Spacer(),
+          SizedBox(width: 20),
+
         ],
       ),
       body: SafeArea(

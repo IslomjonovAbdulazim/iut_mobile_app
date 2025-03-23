@@ -114,24 +114,26 @@ class _SortMethodDropdown extends GetView<LeaderboardController> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      dropdownColor: context.cardColor,
-      borderRadius: BorderRadius.circular(20),
-      value: controller.selectedSortMethod.value,
-      onChanged: controller.changeSortMethod,
-      underline: SizedBox.shrink(),
-
-      items: controller.sortOptions
-          .map(
-            (m) => DropdownMenuItem<String>(
-              value: m,
-              child: Text(
-                m,
-                style: context.smallName,
+    return Obx(
+      () => DropdownButton<String>(
+        dropdownColor: context.cardColor,
+        borderRadius: BorderRadius.circular(10),
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        value: controller.selectedSortMethod.value,
+        onChanged: controller.changeSortMethod,
+        underline: SizedBox.shrink(),
+        items: controller.sortOptions
+            .map(
+              (sortOption) => DropdownMenuItem<String>(
+                value: sortOption,
+                child: Text(
+                  sortOption,
+                  style: context.name,
+                ),
               ),
-            ),
-          )
-          .toList(),
+            )
+            .toList(),
+      ),
     );
   }
 }
