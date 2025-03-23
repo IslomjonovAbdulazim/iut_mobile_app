@@ -11,7 +11,11 @@ class LeaderboardUserDetailPage
       appBar: AppBar(
         backgroundColor: context.backgroundColor,
         surfaceTintColor: context.backgroundColor,
-        title: Text(controller.user.value.fullname),
+        title: controller.isLoading.value
+            ? Center(
+                child: CircularProgressIndicator.adaptive(),
+              )
+            : Text(controller.user.value.fullname),
       ),
       body: controller.isLoading.value
           ? Center(
@@ -28,6 +32,7 @@ class LeaderboardUserDetailPage
                   SizedBox(height: 30),
                   _QuickInfo(),
                   SizedBox(height: 30),
+                  _Subjects(),
                   SizedBox(height: 200),
                 ],
               ),

@@ -108,3 +108,29 @@ class _UserItem extends StatelessWidget {
     );
   }
 }
+
+class _SortMethodDropdown extends GetView<LeaderboardController> {
+  const _SortMethodDropdown();
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      dropdownColor: context.cardColor,
+      borderRadius: BorderRadius.circular(20),
+      value: controller.selectedSortMethod.value,
+      onChanged: controller.changeSortMethod,
+      underline: SizedBox.shrink(),
+      items: controller.sortOptions
+          .map(
+            (m) => DropdownMenuItem<String>(
+              value: m,
+              child: Text(
+                m,
+                style: context.smallName,
+              ),
+            ),
+          )
+          .toList(),
+    );
+  }
+}

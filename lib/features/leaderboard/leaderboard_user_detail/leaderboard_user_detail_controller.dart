@@ -5,6 +5,7 @@ class LeaderboardUserDetailController extends GetxController {
   late Rx<LeaderboardUserModel> user;
   late Rx<DetailUserModel> detail;
 
+
   @override
   void onInit() {
     init();

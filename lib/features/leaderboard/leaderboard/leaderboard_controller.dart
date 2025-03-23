@@ -21,4 +21,23 @@ class LeaderboardController extends GetxController {
     //       .toList();
     // });
   }
+
+
+  List<String> sortOptions = [
+    "GPA",
+    "Academic English 2",
+    "Technical Writing & Discussion",
+    "Calculus 2",
+    "Physics 2",
+    "Physics Experiment 2",
+    "Object Oriented Programming 2",
+    "Creative Engineering Design",
+  ];
+  RxString selectedSortMethod = "GPA".obs;
+
+
+  void changeSortMethod(String? value) {
+    if (value == null) return;
+    selectedSortMethod.value = value;
+  }
 }
