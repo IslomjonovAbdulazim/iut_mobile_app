@@ -99,7 +99,7 @@ class _UserItem extends StatelessWidget {
                           ),
                           SizedBox(height: 3),
                           Text(
-                            "#${rank ?? sub.rank} | ${sub.percentage}%",
+                            "#${rank == null || subject != sub.name ? sub.rank : rank} | ${sub.percentage}%",
                             style: context.number,
                           ),
                         ],

@@ -2,31 +2,12 @@ part of 'imports.dart';
 
 class LeaderboardController extends GetxController {
   RxBool isLoading = false.obs;
-
-  Stream<List<LeaderboardUserModel>> connectLeaderboard() {
-    final result = sort(mockLeaderboardUsers);
-    return Stream.value(result);
-    // print(ApiConstants.streamURL + ApiConstants.leaderboard);
-    // final channel = WebSocketChannel.connect(
-    //   Uri.parse(ApiConstants.streamURL + ApiConstants.leaderboard),
-    // );
-    //
-    // return channel.stream.map((data) {
-    //   // Assuming your data comes in as a JSON-encoded list
-    //   print("-----------------------");
-    //   print("\n\n\n\n\n\n");
-    //   print(data);
-    //   final List<dynamic> jsonList = jsonDecode(data);
-    //   return jsonList
-    //       .map((json) => LeaderboardUserModel.fromJson(json))
-    //       .toList();
-    // });
-  }
+  RxList<LeaderboardUserModel> users = <LeaderboardUserModel>[].obs;
 
   List<String> sortOptions = [
     "GPA",
-    "Name",
-    "ID",
+    // "Name",
+    // "ID",
     "AE2",
     "TW&D",
     "Calculus 2",
@@ -47,34 +28,57 @@ class LeaderboardController extends GetxController {
 
   RxString selectedSortMethod = "GPA".obs;
 
+  String? get currSubject => subjectNameMap[selectedSortMethod.value];
+
+  @override
+  void onInit() {
+    connectLeaderboard();
+    super.onInit();
+  }
+
+  void connectLeaderboard() {
+    users.value = mockLeaderboardUsers;
+    sort();
+  }
+
   void changeSortMethod(String? value) {
     if (value == null) return;
     selectedSortMethod.value = value;
+    sort();
   }
 
-  List<LeaderboardUserModel> sort(List<LeaderboardUserModel> users) {
-    print("-------------sort");
-    final result = users;
-
+  void sort() {
     if (selectedSortMethod.value == "GPA") {
-      result.sort((a, b) => b.gpa.compareTo(a.gpa));
+      users.sort((a, b) => b.gpa.compareTo(a.gpa));
     } else {
-      result.sort((a, b) {
+      users.sort((a, b) {
         final aSubject = a.subjects.firstWhere(
-              (s) => s.name == subjectNameMap[selectedSortMethod.value],
+          (s) => s.name == currSubject,
           orElse: () => const SubjectModel(name: '', percentage: 0, rank: 999),
         );
         final bSubject = b.subjects.firstWhere(
-              (s) => s.name == subjectNameMap[selectedSortMethod.value],
+          (s) => s.name == currSubject,
           orElse: () => const SubjectModel(name: '', percentage: 0, rank: 999),
         );
         return bSubject.percentage.compareTo(aSubject.percentage);
       });
+
+      users.value = users.map((user) {
+        final subjects = user.subjects;
+        final selected = subjects.firstWhere(
+          (s) => s.name == currSubject,
+          orElse: () => const SubjectModel(name: '', percentage: 0, rank: 999),
+        );
+
+        if (selected.name.isNotEmpty) {
+          final reordered = [
+            selected,
+            ...subjects.where((s) => s.name != currSubject),
+          ];
+          return user.copyWith(subjects: reordered);
+        }
+        return user;
+      }).toList();
     }
-
-    return result;
   }
-
-
 }
-

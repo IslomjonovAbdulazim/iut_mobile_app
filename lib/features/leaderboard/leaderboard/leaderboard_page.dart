@@ -27,48 +27,21 @@ class LeaderboardPage extends GetView<LeaderboardController> {
                 ? Center(
                     child: CircularProgressIndicator.adaptive(),
                   )
-                : StreamBuilder<List<LeaderboardUserModel>>(
-                    stream: controller.connectLeaderboard(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasError || snapshot.data == null) {
-                        return Center(
-                          child: Text(
-                            snapshot.error.toString(),
-                            style: context.smallName,
-                          ),
-                        );
-                      }
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(
-                          child: Text(
-                            "Wait",
-                            style: context.smallName,
-                          ),
-                        );
-                      }
-
-                      final users = controller.sort(snapshot.data!);
-
-                      return ImplicitlyAnimatedList<LeaderboardUserModel>(
-                        items: users,
-                        areItemsTheSame: (oldItem, newItem) =>
-                            oldItem.id == newItem.id,
-                        itemBuilder: (context, animation, user, index) {
-                          return SizeFadeTransition(
-                            animation: animation,
-                            child: _UserItem(
-                              user: user,
-                              index: index,
-                              rank: controller.subjectNameMap[controller
-                                          .selectedSortMethod.value] ==
-                                      null
-                                  ? null
-                                  : index + 1,
-                              subject: controller.subjectNameMap[
-                                  controller.selectedSortMethod.value],
-                            ),
-                          );
-                        },
+                : ImplicitlyAnimatedList<LeaderboardUserModel>(
+                    items: controller.users,
+                    areItemsTheSame: (oldItem, newItem) =>
+                        oldItem.id == newItem.id,
+                    itemBuilder: (context, animation, user, index) {
+                      return SizeFadeTransition(
+                        animation: animation,
+                        child: _UserItem(
+                          user: user,
+                          index: index,
+                          rank:
+                              controller.currSubject == null ? null : index + 1,
+                          subject: controller.subjectNameMap[
+                              controller.selectedSortMethod.value],
+                        ),
                       );
                     },
                   ),
