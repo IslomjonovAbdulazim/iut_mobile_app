@@ -120,6 +120,7 @@ class _SortMethodDropdown extends GetView<LeaderboardController> {
       value: controller.selectedSortMethod.value,
       onChanged: controller.changeSortMethod,
       underline: SizedBox.shrink(),
+
       items: controller.sortOptions
           .map(
             (m) => DropdownMenuItem<String>(
