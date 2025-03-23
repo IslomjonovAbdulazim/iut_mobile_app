@@ -3,10 +3,14 @@ part of 'imports.dart';
 class _UserItem extends StatelessWidget {
   final LeaderboardUserModel user;
   final int index;
+  final int? rank;
+  final String? subject;
 
   const _UserItem({
     required this.user,
     required this.index,
+    this.rank,
+    this.subject,
   });
 
   @override
@@ -77,10 +81,13 @@ class _UserItem extends StatelessWidget {
                   final sub = user.subjects[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Container(
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
-                        color: context.selection,
+                        color: rank == null || sub.name == subject
+                            ? context.selection
+                            : context.dividerColor,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(
@@ -92,7 +99,7 @@ class _UserItem extends StatelessWidget {
                           ),
                           SizedBox(height: 3),
                           Text(
-                            "#${sub.rank} | ${sub.percentage}%",
+                            "#${rank ?? sub.rank} | ${sub.percentage}%",
                             style: context.number,
                           ),
                         ],
