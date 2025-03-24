@@ -7,6 +7,7 @@ import 'package:iut_mobile_app/utils/extenstions/text_style_extention.dart';
 
 import 'package:implicitly_animated_reorderable_list_2/implicitly_animated_reorderable_list_2.dart';
 import 'package:implicitly_animated_reorderable_list_2/transitions.dart';
+import 'package:searchfield/searchfield.dart';
 import '../../../routes/app_routes.dart';
 import '../../../widgets/cashed_network_image_widget.dart';
 

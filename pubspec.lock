@@ -1328,6 +1328,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.28.0"
+  searchfield:
+    dependency: "direct main"
+    description:
+      name: searchfield
+      sha256: "05794aebf2309dec591b0fba493c06336285137bd3ef50cd48d1a94edd6b709f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.6"
   shared_preferences:
     dependency: "direct main"
     description:

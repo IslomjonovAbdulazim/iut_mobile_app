@@ -8,6 +8,8 @@ class LeaderboardPage extends GetView<LeaderboardController> {
     return Scaffold(
       backgroundColor: context.backgroundColor,
       appBar: AppBar(
+        backgroundColor: context.backgroundColor,
+        surfaceTintColor: context.backgroundColor,
         actions: [
           SizedBox(width: 20),
           Text(
@@ -15,7 +17,6 @@ class LeaderboardPage extends GetView<LeaderboardController> {
             style: context.smallName,
           ),
           SafeArea(child: _SortMethodDropdown()),
-          Spacer(),
           SizedBox(width: 20),
         ],
       ),

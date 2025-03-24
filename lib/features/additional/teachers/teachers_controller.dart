@@ -12,7 +12,6 @@ class TeachersController extends GetxController {
 
   Future<void> init() async {
     isLoading.value = true;
-    await Future.delayed(Duration(seconds: 2));
     teachers.value = mockTeachers;
     isLoading.value = false;
   }

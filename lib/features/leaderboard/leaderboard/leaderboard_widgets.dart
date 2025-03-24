@@ -144,3 +144,33 @@ class _SortMethodDropdown extends GetView<LeaderboardController> {
     );
   }
 }
+
+class _Search extends GetView<LeaderboardController> {
+  const _Search();
+
+  @override
+  Widget build(BuildContext context) {
+    return SearchField<LeaderboardUserModel>(
+      suggestions: controller.users
+          .map((user) => SearchFieldListItem<LeaderboardUserModel>(
+                user.fullname,
+                item: user,
+              ))
+          .toList(),
+      searchInputDecoration: SearchInputDecoration(
+        labelText: 'Search',
+        hintText: 'Search',
+        border: OutlineInputBorder(),
+      ),
+      suggestionState: Suggestion.expand,
+      maxSuggestionsInViewPort: 5,
+      itemHeight: 40,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter a search term';
+        }
+        return null;
+      },
+    );
+  }
+}
