@@ -1,6 +1,9 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:faker/faker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:iut_mobile_app/routes/app_routes.dart';
@@ -22,7 +25,15 @@ void main() async {
   Get.put(ThemeController());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: SystemUiOverlay.values);
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: kIsWeb,
+      data: DevicePreviewData(
+        isDarkMode: true,
+      ),
+      builder: (context) => MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -55,5 +66,3 @@ class MyApp extends StatelessWidget {
     });
   }
 }
-
-

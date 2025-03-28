@@ -18,24 +18,15 @@ class _TeacherWidget extends StatelessWidget {
         children: [
           SizedBox(
             width: 70,
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: SizedBox(
-                    height: 70,
-                    width: 70,
-                    child: CachedNetworkWidget(
-                      teacher.avatar,
-                    ),
-                  ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: SizedBox(
+                height: 70,
+                width: 70,
+                child: CachedNetworkWidget(
+                  teacher.avatar,
                 ),
-                SizedBox(height: 5),
-                Text(
-                  teacher.subject,
-                  style: context.smallName,
-                ),
-              ],
+              ),
             ),
           ),
           SizedBox(width: 8),
@@ -66,6 +57,16 @@ class _TeacherWidget extends StatelessWidget {
                     style: context.smallName,
                     textAlign: TextAlign.center,
                   ),
+                ),
+                SizedBox(height: 5),
+                Row(
+                  children: [
+                    Spacer(),
+                    Text(
+                      teacher.subject,
+                      style: context.smallName,
+                    ),
+                  ],
                 ),
               ],
             ),
